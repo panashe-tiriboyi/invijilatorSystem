@@ -11,9 +11,9 @@ const Nav = () => {
         <li>
           <Link href="/data">Add Teacher</Link>
         </li>
-        {/* <li>
-          <Link href="/print">Print</Link>
-        </li> */}
+        <li>
+          <Link href="/allocate">Allocate Subjects</Link>
+        </li>
       </ul>
     </div>
   );

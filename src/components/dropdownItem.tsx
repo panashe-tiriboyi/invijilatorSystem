@@ -1,13 +1,22 @@
 import React from "react";
 
-const DropdownItem = ({ itemname, handleSelect }) => {
-  const handleData = (data) => {
-    handleSelect(data);
+const DropdownItem = ({ itemtype, itemname, handleSelect, form, itemId }) => {
+  let inputData = "";
+  const handleData = () => {
+    if (itemtype == "teacher") {
+      inputData = itemname;
+      handleSelect(inputData, itemId);
+    } else {
+      inputData = itemname + " form " + form;
+      handleSelect(inputData, itemId);
+    }
   };
+
+  const handleInput = () => {};
 
   return (
     <div className="DropdownItem">
-      <button onClick={() => handleData(itemname)}>{itemname}</button>
+      <button onClick={handleData}>{itemname}</button>
     </div>
   );
 };

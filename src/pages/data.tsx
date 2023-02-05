@@ -3,6 +3,8 @@ import { useState } from "react";
 import Nav from "../components/nav";
 import { PrismaClient } from "@prisma/client";
 import { Teacher } from "@prisma/client";
+import { Subjects } from "@prisma/client";
+import { message } from "antd";
 
 const prisma = new PrismaClient();
 
@@ -15,7 +17,7 @@ export async function getServerSideProps() {
   };
 }
 export type TeacherWithSubInvij = Teacher & {
-  invijilationHours: "0";
+  invijilationMinutes: "0";
   _count: { subjects: number; inijilation: number };
 };
 
@@ -29,7 +31,7 @@ const Data = (props: teacherProp) => {
       method: "POST",
       body: JSON.stringify({
         ...teacher,
-        invijilationHours: "0",
+        invijilationMinutes: "0",
         subjects: {},
         invijilation: {},
       }),
@@ -44,7 +46,7 @@ const Data = (props: teacherProp) => {
     // await prisma.teacher.create({
     //     data:{
     //      name: teacherData.name,
-    //      invijilationHours: '0',
+    //      invijilationMinutes: '0',
     //      subjects: {},
     //      invijilation:{}
 
@@ -60,6 +62,7 @@ const Data = (props: teacherProp) => {
 
     console.log(teacherData);
     saveTeacher(teacherData);
+    message.success("Teacher Saved Successfully");
   };
 
   const handleSubmitSubject = (e) => {
@@ -71,7 +74,6 @@ const Data = (props: teacherProp) => {
   return (
     <div className="container">
       <div className="row">
-        {" "}
         <Nav />
         <div className="row">
           <div className="column">

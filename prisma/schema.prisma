@@ -13,7 +13,7 @@ datasource db {
 model Teacher{
   id String @id @default(cuid())
   name String
-  invijilationHours String?
+  invijilationMinutes String?
   subjects Subjects[]
   invijilation Invijilation[]
 }
@@ -32,7 +32,9 @@ model Invijilation{
   Subjects Subjects? @relation(fields: [subjectId], references: [id])
   subjectId String 
   time String
-  date DateTime @updatedAt
+  date DateTime @updatedAt  
+  paper String?
+  minutes String?
 
 }
 

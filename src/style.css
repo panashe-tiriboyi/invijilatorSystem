@@ -104,3 +104,10 @@ button {
 .menu {
   background-color: #2f2f2f;
 }
+.column {
+  display: flex;
+  align-items: center;
+}
+.column label {
+  margin-left: 40px;
+}
